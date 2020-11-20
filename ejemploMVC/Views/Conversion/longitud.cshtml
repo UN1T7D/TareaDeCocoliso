@@ -1,0 +1,48 @@
+﻿@model ejemploMVC.Models.conversion
+@{
+    ViewBag.Title = "longitud";
+}
+
+
+<h2>Conversiones de longitud</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="text-header">Conversion de longitud</div>
+                    </div>
+                    <div class="card-body">
+                        <br /><br />
+                        <div class=" form-group ">
+                            @Html.LabelFor(Model => Model.longitud, new { @class = "control-label" })
+                            @Html.TextBoxFor(Model => Model.longitud, new { @class = "form-control", type = "number", step = "0.01", required = "true" })
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <select class="form-control" name="opcion">
+                                <option value="0" selected>Seleccione una conversion</option>
+                                <option value="1">De metros (m) a pulgadas (in)</option>
+                                <option value="2">De pulgadas (in) a metros (m)</option>
+                            </select>
+                        </div>
+                        <div class="form-group mb-5">
+                            <input type="submit" value="Calcular" class="btn btn-success" />
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@if (ViewBag.resultado != null)
+{
+    <span>Resultado: &nbsp;@ViewBag.resultado</span>
+}
